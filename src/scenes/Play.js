@@ -10,7 +10,6 @@ class Play extends Phaser.Scene {
         this.load.image('fondo', '../public/img/sky.png');
         this.load.image('red', '../public/img/red.png');
         this.load.spritesheet('nave', '../public/img/nave.png', { frameWidth: 70, frameHeight: 62 });
-        this.load.image('proyectil', '../public/img/shoot.png');
     }
 
     create() {
@@ -19,11 +18,6 @@ class Play extends Phaser.Scene {
 
         //this.player.setBounce(0.2);   cuidado 
         this.player.setCollideWorldBounds(true);
-        // Crea un grupo de proyectiles
-        this.proyectiles = this.physics.add.group();
-         // Configura la tecla para disparar
-         this.input.keyboard.on('keydown-SPACE', this.dispararProyectil, this);
-        
 
         this.anims.create({
             key: 'left',
@@ -71,18 +65,6 @@ class Play extends Phaser.Scene {
 
     }
 
-    dispararProyectil() {
-        const proyectil = this.physics.add.sprite(this.player.x, this.player.y, 'proyectil');
-        
-        // Configura la velocidad del proyectil para disparar hacia la derecha
-        const velocidadX = 300; // Dispara hacia la derecha
-        const velocidadY = 0; // No se mueve verticalmente
-
-        proyectil.setVelocity(velocidadX, velocidadY);
-        this.proyectiles.add(proyectil);
-    }
-
-
     update() {
         if (this.cursors.left.isDown) {
             this.player.setVelocityX(-160);
@@ -103,22 +85,8 @@ class Play extends Phaser.Scene {
             this.player.anims.play('down'); }
 
 
-    
-
-        // Mueve los proyectiles
-        this.proyectiles.getChildren().forEach((proyectil) => {
-            // Configura la velocidad de los proyectiles para que sigan avanzando hacia la derecha
-            proyectil.setVelocityX(300);
-        });
-
-        // Verifica si los proyectiles han salido de la pantalla y elimínalos
-        this.proyectiles.getChildren().forEach((proyectil) => {
-            if (proyectil.x > this.sys.game.config.width) {
-                proyectil.destroy();
-            }
-        });
     }
-}
 
+};
 export default Play;
 
