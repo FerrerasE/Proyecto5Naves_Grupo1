@@ -29,7 +29,7 @@ class Perdiste extends Phaser.Scene {
 
         // un evento de clic para el botón
         startButton.on('pointerdown', () => {
-            this.scene.start('Escena1'); // Inicia la escena principal cuando se hace clic
+            this.scene.start('Inicio'); // Inicia la escena principal cuando se hace clic
         });
     }
 }

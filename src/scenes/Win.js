@@ -1,12 +1,12 @@
-class Inicio extends Phaser.Scene {
+class Win extends Phaser.Scene {
     constructor() {
-        super("Inicio");
+        super("Win");
         this.score=0;
     }
 
     preload() {
         // Carga la imagen de fondo
-        this.load.image('menuI', '../public/img/Inicio.jpg'); // Reemplaza '....' con la ruta correcta
+        this.load.image('Win', '../public/img/Win.jpeg'); // Reemplaza '....' con la ruta correcta
 
     }
 
@@ -14,13 +14,13 @@ class Inicio extends Phaser.Scene {
 
     create() {
        
-        this.add.image(400, 300, 'menuI').setScale(1); // las coordenadas y el nombre de la imagen
+        this.add.image(300, 300, 'Win').setScale(1); // las coordenadas y el nombre de la imagen
 
         //  botón de inicio
-        const startButton = this.add.text(300, 30, 'Tomar vuelo', {
+        const startButton = this.add.text(300, 50, 'Ganaste!!', {
             fontSize: '32px',
             fill: '#fff',
-            backgroundColor: '#800080', // Color de fondo del botón
+            backgroundColor: '#FF0000', // Color de fondo del botón
             padding: { x: 20, y: 10 }, // Espaciado interno del botón
         });
         
@@ -29,9 +29,9 @@ class Inicio extends Phaser.Scene {
 
         // un evento de clic para el botón
         startButton.on('pointerdown', () => {
-            this.scene.start('Escena1'); // Inicia la escena principal cuando se hace clic
+            this.scene.start('Inicio'); // Inicia la escena principal cuando se hace clic
         });
     }
 }
 
-export default Inicio;
+export default Win;
