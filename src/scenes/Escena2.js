@@ -2,7 +2,7 @@ class Escena2 extends Phaser.Scene {
     constructor() {
         super("Escena2");
         this.control01 = false;
-        this.score = 0;
+        this.score = 200;
     }
 
     preload() {
@@ -11,13 +11,19 @@ class Escena2 extends Phaser.Scene {
         this.load.image('red', 'public/img/red.png');
         this.load.spritesheet('nave', 'public/img/nave.png', { frameWidth: 70, frameHeight: 62 });
         this.load.image('enemy', 'public/img/Enemigo2.png');
+        this.load.image('disparos', 'public/img/shoot.png');  
     }
 
     create() {
         this.add.image(400, 300, 'espacio').setScale(0.9);
         this.player = this.physics.add.sprite(100, 30, 'nave');
         this.enemigos = this.physics.add.group();
+        this.disparos = this.physics.add.group(); // gestiona los disparos
         
+        this.input.keyboard.on('keydown-SPACE', this.disparar, this); //La tecla para disparar
+        this.player.setCollideWorldBounds(true);
+
+
         //este time es para que los enemigos se agreguen de forma infinita cada 1 segundo
         this.time.addEvent({
             delay: 1000,
@@ -72,8 +78,15 @@ class Escena2 extends Phaser.Scene {
         // Configura la colisión entre el jugador y los enemigos
         this.physics.add.collider(this.player, this.enemigos, this.playerEnemy, null, this);
 
+        // Configura la colisión entre los disparos y los enemigos
+        this.physics.add.collider(this.disparos, this.enemigos, this.disparoEnemigo, null, this);
+
+
         //Para controlar el puntaje
-       this.scoreText = this.add.text(16, 16, 'Puntaje: 0', { fontSize: '32px', fill: '#FFFFFF' });
+       this.scoreText = this.add.text(16, 16, 'Puntaje: 200', { fontSize: '32px', fill: '#FFFFFF' });
+       
+
+
     }
 
     update() {
@@ -106,19 +119,47 @@ class Escena2 extends Phaser.Scene {
             'enemy'
         ).setScale(0.2);
 
-        enemigo.setVelocityX(-400);
+        enemigo.setVelocityX(-600);
     }
 
     
 
     playerEnemy(player, enemy) {
         // Cuando el jugador colisiona con un enemigo, finaliza el juego
+        this.score = 200;
         this.scene.start('Perdiste');
+
     }
+
+
+    
+
+    
+    disparar() {
+        const disparo = this.disparos.create(this.player.x, this.player.y, 'disparos');
+        disparo.setVelocity(300, 0); // Ajusta la velocidad del disparo
+    }
+
+    disparoEnemigo(disparo, enemy) {
+        // Cuando un disparo colisiona con un enemigo, destruye ambos
+        disparo.destroy();
+        enemy.destroy();
+        this.score += 10;
+        this.scoreText.setText('Puntaje: ' + this.score);
+
+        //para pasar al otro nivel
+        if (this.score == 500) {
+            this.scene.start('Win');
+            this.score = 200;
+            
+         }
+    }
+
+
+
 }
 
 
 
+
 export default Escena2;
-
-
