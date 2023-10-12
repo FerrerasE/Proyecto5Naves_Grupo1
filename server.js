@@ -14,6 +14,6 @@ app.use('/src', express.static(__dirname + '/src'));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
 //configurar server basico
-app.listen(5000, function(){    
+app.listen(5005, function(){    
     console.log("Servidor NODE GUSTSO kl corriendo correctamente")
 });

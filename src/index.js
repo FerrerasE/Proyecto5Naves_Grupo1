@@ -1,4 +1,9 @@
-import Play from "./scenes/Play.js";
+
+import Inicio from "./scenes/Inicio.js";
+import Escena1 from "./scenes/Escena1.js";
+import Escena2 from "./scenes/Escena2.js";
+
+import Perdiste from "./scenes/Perdiste.js";
 
 
 //const puntaje = 0;
@@ -14,7 +19,7 @@ let config = {
         }
     },
     //scene: [Play]
-    scene:[Play]
+    scene:[Inicio,Escena1,Escena2,Perdiste]
 };
 
 let game = new Phaser.Game(config);
