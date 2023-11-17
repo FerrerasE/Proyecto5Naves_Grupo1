@@ -14,10 +14,10 @@ class Inicio extends Phaser.Scene {
 
     create() {
        
-        this.add.image(400, 300, 'menuI').setScale(1); // las coordenadas y el nombre de la imagen
+        this.add.image(400, 300, 'menuI').setScale(1.1); // las coordenadas y el nombre de la imagen
 
         //  botón de inicio
-        const startButton = this.add.text(300, 30, 'Tomar vuelo', {
+        const startButton = this.add.text(500, 30, 'Tomar vuelo', {
             fontSize: '32px',
             fill: '#fff',
             backgroundColor: '#800080', // Color de fondo del botón

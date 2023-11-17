@@ -14,10 +14,10 @@ class Win extends Phaser.Scene {
 
     create() {
        
-        this.add.image(300, 300, 'Win').setScale(1); // las coordenadas y el nombre de la imagen
+        this.add.image(500, 403, 'Win').setScale(1.5); // las coordenadas y el nombre de la imagen
 
         //  botón de inicio
-        const startButton = this.add.text(300, 50, 'Ganaste!!', {
+        const startButton = this.add.text(500, 50, 'Ganaste!!', {
             fontSize: '32px',
             fill: '#fff',
             backgroundColor: '#FF0000', // Color de fondo del botón

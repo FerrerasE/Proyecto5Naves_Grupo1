@@ -14,7 +14,7 @@ class Escena1 extends Phaser.Scene {
     }
 
     create() {
-        this.add.image(300, 300, 'fondo');
+        this.add.image(525, 400, 'fondo').setScale(1.5);
         this.player = this.physics.add.sprite(100, 30, 'nave');
         this.enemigos = this.physics.add.group();
         
@@ -115,7 +115,7 @@ class Escena1 extends Phaser.Scene {
 
     generarEnemigo() {
         const enemigo = this.enemigos.create(
-            800,
+            1050,
             Phaser.Math.Between(20, 580),
             'enemigo'
         );

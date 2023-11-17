@@ -14,10 +14,10 @@ class Perdiste extends Phaser.Scene {
 
     create() {
        
-        this.add.image(300, 300, 'Perdiste').setScale(2); // las coordenadas y el nombre de la imagen
+        this.add.image(525, 350, 'Perdiste').setScale(2.6); // las coordenadas y el nombre de la imagen
 
         //  botón de inicio
-        const startButton = this.add.text(150, 50, 'No te rindas!!', {
+        const startButton = this.add.text(500, 50, 'No te rindas!!', {
             fontSize: '32px',
             fill: '#fff',
             backgroundColor: '#008000', // Color de fondo del botón

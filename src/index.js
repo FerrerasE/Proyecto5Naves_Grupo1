@@ -11,8 +11,8 @@ import Win from "./scenes/Win.js";
 
 let config = {
     type: Phaser.AUTO,
-    width: 600,
-    height: 600,
+    width: 1050,
+    height: 680,
     physics: {
         default: 'arcade',
         arcade: {
